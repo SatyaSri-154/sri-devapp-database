@@ -1,0 +1,39 @@
+# apiVersion: v1
+# kind: PersistentVolume
+# metadata:
+#   name: sri-pv
+# spec:
+#   accessModes:
+#   - ReadWriteOnce
+#   awsElasticBlockStore:
+#     fsType: xfs
+#     volumeID: aws://us-east-1a/vol-0f1e499898998f3700
+#   capacity:
+#     storage: 8Gi
+#   persistentVolumeReclaimPolicy: Retain
+#   storageClassName: gp2-retain
+#   volumeMode: Filesystem
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: sql-database-pv
+  labels:
+    type: sql-vol
+    app: mysql
+spec:
+  storageClassName: sql-storage-pv
+  claimRef:
+    name: sql-database-pvc
+    namespace: sridevapp
+  capacity:
+    storage: 5Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+    - ReadOnlyMany
+  mountOptions:
+    - nfsvers=4.1
+  nfs:
+    path: "/srv/nfs/kubedata/harbor/database"
+    server: worker-node05
