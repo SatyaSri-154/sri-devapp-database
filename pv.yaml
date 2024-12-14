@@ -25,9 +25,9 @@ spec:
   storageClassName: sql-storage-pv
   claimRef:
     name: sql-database-pvc
-    namespace: sridevapp
+    namespace: frontend
   capacity:
-    storage: 5Gi
+    storage: 2Gi
   volumeMode: Filesystem
   accessModes:
     - ReadWriteOnce
@@ -35,5 +35,5 @@ spec:
   mountOptions:
     - nfsvers=4.1
   nfs:
-    path: "/srv/nfs/kubedata/harbor/database"
-    server: worker-node05
+    path: "/srv/nfs/kubedata/database"
+    server: 10.10.0.12
