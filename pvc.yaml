@@ -18,7 +18,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: sql-database-pvc
-  namespace: frontend
+  #namespace: frontend
   labels:
     app: mysql
     type: sql-vol
