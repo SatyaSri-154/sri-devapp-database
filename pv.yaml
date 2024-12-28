@@ -36,4 +36,4 @@ spec:
     - nfsvers=4.1
   nfs:
     path: "/srv/nfs/kubedata/database"
-    server: 10.10.0.12
+    server: 10.0.0.11
