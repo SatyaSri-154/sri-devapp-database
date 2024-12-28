@@ -25,7 +25,7 @@ spec:
   storageClassName: sql-storage-pv
   claimRef:
     name: sql-database-pvc
-    namespace: frontend
+    #namespace: frontend
   capacity:
     storage: 2Gi
   volumeMode: Filesystem
